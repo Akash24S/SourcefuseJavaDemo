@@ -30,11 +30,11 @@ public class NewsVisitor {
 		XSSFSheet sheet = workbook.getSheetAt(0);
 
 		//for (int k = 1; k <= 2; k++) {
-			for (int j = 0; j < 51; j++) {
+			for (int j = 0; j < 116; j++) {
 				Row row = sheet.getRow(j + 1);
 				Cell cell = row.getCell(0);
 				String cellval = cell.getStringCellValue();
-				System.out.println(cellval);
+				System.out.println((j+1)+":"+ cellval);
 				((JavascriptExecutor) driver).executeScript("window.open()");
 				ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 				driver.switchTo().window(tabs.get(j));
@@ -47,6 +47,10 @@ public class NewsVisitor {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+				/*
+				 * driver.close(); 
+				 * driver.switchTo().defaultContent();
+				 */
 			}
 		//}
 		workbook.close();
